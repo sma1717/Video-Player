@@ -5,9 +5,7 @@ A modern, component-based video player built with Web Components and bundled wit
 ## Features
 
 - 🎮 **Custom Video Controls**: Play/pause, seek bar, volume control, and fullscreen toggle
-- 📱 **Responsive Design**: Adapts to different screen sizes with mobile-friendly controls
 - ⌨️ **Keyboard Shortcuts**: Complete keyboard navigation support for accessibility
-- 🎨 **Customizable Styling**: CSS custom properties for easy theming and customization
 - 🔧 **Web Components Architecture**: Modular, reusable components that work across frameworks
 - 📦 **Webpack Bundling**: Optimized build process for production deployment
 - 🎯 **Center Overlay Controls**: Intuitive center button for play/pause and status feedback
@@ -179,27 +177,6 @@ The video player can be used as a web component in any HTML page:
 - `muted`: Start with audio muted (true/false)
 - `preload`: Preload strategy
 
-## Styling
-
-The player uses CSS custom properties for easy customization:
-
-```css
-:root {
-    --wc-video-primary-color: #007bff;
-    --wc-video-background-color: #000;
-    --wc-video-text-color: #ffffff;
-    --wc-video-border-radius: 8px;
-    --wc-video-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
 
 ## License
 

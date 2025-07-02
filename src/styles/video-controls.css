@@ -1,0 +1,467 @@
+/**
+ * WC-Video Controls Styles
+ * Styling for all video control components
+ */
+
+ video {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+  }
+  
+  /* Custom controls */
+  #custom-controls {
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  
+  /* Ensure controls remain in fullscreen */
+  :fullscreen #custom-controls,
+  :-webkit-full-screen #custom-controls {
+    position: absolute;
+    bottom: 10px;
+    z-index: 9999;
+  }
+
+/* Common button styles */
+.wc-video [role="button"],
+.wc-video button {
+    background: transparent;
+    border: none;
+    color: var(--wc-video-text-color);
+    cursor: pointer;
+    transition: var(--wc-video-transition);
+    outline: none;
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wc-video [role="button"]:hover,
+.wc-video button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.wc-video [role="button"]:focus-visible,
+.wc-video button:focus-visible {
+    outline: 2px solid var(--wc-video-primary-color);
+    outline-offset: 2px;
+}
+
+.wc-video [role="button"]:active,
+.wc-video button:active {
+    transform: scale(0.95);
+}
+
+.wc-video [role="button"][aria-disabled="true"],
+.wc-video button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Icon styles */
+.wc-video svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: var(--wc-video-transition);
+}
+
+
+/* ============================================================================
+   SEEK BAR COMPONENT
+   ============================================================================ */
+.wc-seek-bar {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    border-radius: 3px;
+    overflow: visible;
+    background: #e0e0e0; /* gray background */
+    transition: var(--wc-video-transition);
+}
+
+.wc-seek-bar__track {
+    position: fixed;
+    top: -10px;
+    left: 0px;
+    width: 100%;
+    height: 25%;
+    border-radius: inherit;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.wc-seek-bar__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #1976d2;
+    transition: width 0.1s ease;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+.wc-seek-bar__handle {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 5px;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 1;
+    transition: var(--wc-video-transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    display: none;
+}
+
+.wc-seek-bar__track:hover .wc-seek-bar__handle {
+    display: block;
+}
+
+.wc-seek-bar:hover .wc-seek-bar__handle,
+.wc-seek-bar--seeking .wc-seek-bar__handle {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.wc-seek-bar--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Seek bar time preview */
+.wc-seek-bar__time-preview {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    display: none;
+    margin-bottom: 8px;
+    white-space: nowrap;
+}
+
+.wc-seek-bar__time-preview::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.wc-seek-bar--hover .wc-seek-bar__time-preview {
+    display: block;
+}
+
+/* ============================================================================
+   VOLUME CONTROL COMPONENT
+   ============================================================================ */
+.wc-volume-control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wc-volume-control__mute-button {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.wc-volume-control__icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.wc-volume-control__slider-container {
+    position: absolute;
+    bottom: 35%;
+    left: 100%;
+    opacity: 1;
+    cursor: pointer;
+    transition: var(--wc-video-transition);
+    pointer-events: auto;
+}
+
+.wc-volume-control--show-slider .wc-volume-control__slider-container {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.transformX {
+    transform: translateX(150%);
+}
+
+.wc-volume-control__slider {
+    width: 6px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    padding: 4px;
+    box-sizing: content-box;
+}
+
+.wc-volume-control__slider::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.wc-volume-control__slider-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: 1;
+}
+
+.wc-volume-control__volume-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--wc-video-primary-color);
+    border-radius: inherit;
+    transition: height 0.1s ease;
+}
+
+.wc-volume-control__volume-handle {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 12px;
+    height: 12px;
+    background: var(--wc-video-primary-color);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    transition: var(--wc-video-transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.wc-volume-control__slider:hover .wc-volume-control__volume-handle {
+    transform: translate(-50%, 50%) scale(1.2);
+}
+
+.wc-volume-control--muted .wc-volume-control__icon {
+    color: var(--wc-video-secondary-color);
+}
+
+.wc-volume-control--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ============================================================================
+   FULLSCREEN BUTTON COMPONENT
+   ============================================================================ */
+.wc-fullscreen-button {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+.wc-fullscreen-button__icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.wc-fullscreen-button__label {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.wc-fullscreen-button--fullscreen .wc-fullscreen-button__icon {
+    transform: rotate(180deg);
+}
+
+.wc-fullscreen-button--disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN FOR CONTROLS
+   ============================================================================ */
+@media (max-width: 768px) {
+    .wc-video svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .wc-play-button {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .wc-play-button__icon svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .wc-seek-bar {
+        height: 8px;
+    }
+    
+    .wc-seek-bar:hover {
+        height: 10px;
+    }
+    
+    .wc-volume-control__mute-button,
+    .wc-fullscreen-button {
+        width: 28px;
+        height: 28px;
+        padding: 4px;
+    }
+    
+    .wc-volume-control__slider {
+        height: 60px;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .wc-video svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .wc-play-button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .wc-play-button__icon svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .wc-volume-control__mute-button,
+    .wc-fullscreen-button {
+        width: 24px;
+        height: 24px;
+        padding: 2px;
+    }
+    
+    .wc-volume-control__slider {
+        height: 50px;
+        width: 4px;
+    }
+    
+}
+
+/* ============================================================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================================================ */
+@media (hover: none) and (pointer: coarse) {
+    .wc-video [role="button"],
+    .wc-video button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .wc-seek-bar {
+        height: 12px;
+        padding: 8px 0;
+    }
+    
+    .wc-seek-bar__handle {
+        opacity: 1;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .wc-volume-control__slider {
+        width: 12px;
+        padding: 8px;
+    }
+    
+    .wc-volume-control__volume-handle {
+        width: 16px;
+        height: 16px;
+        opacity: 1;
+    }
+}
+
+/* ============================================================================
+   HIGH CONTRAST MODE
+   ============================================================================ */
+@media (prefers-contrast: high) {
+    .wc-video [role="button"],
+    .wc-video button {
+        border: 1px solid currentColor;
+    }
+    
+    .wc-seek-bar {
+        border: 1px solid currentColor;
+    }
+    
+    .wc-seek-bar__progress {
+        border: 1px solid #ffffff;
+    }
+    
+}
+
+/* ============================================================================
+   FOCUS MANAGEMENT
+   ============================================================================ */
+.wc-video:focus-within [role="button"]:focus-visible,
+.wc-video:focus-within button:focus-visible {
+    outline: 2px solid var(--wc-video-primary-color);
+    outline-offset: 2px;
+    z-index: 1;
+}
+
+/* Ensure proper focus order */
+.wc-video [tabindex="-1"] {
+    outline: none !important;
+}
+
+/* ============================================================================
+   ANIMATION PREFERENCES
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+    .wc-video [role="button"],
+    .wc-video button,
+    .wc-seek-bar *,
+    .wc-volume-control *,
+    .wc-fullscreen-button * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+} 

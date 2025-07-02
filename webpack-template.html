@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WC-Video Component Demo</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <wc-video-player
+        src="${videoSrc}"
+        poster="${poster}"
+        width="800"
+        height="450"
+        autoplay="false"
+        loop="false"
+        muted="true"
+        preload="metadata"
+        playsinline="true">
+    </wc-video-player>
+    
+    <!-- Load icon definitions first -->
+    <script src="icons/icon-list.js"></script>
+    
+    <!-- Load modules in dependency order -->
+    <% loadingOrder.forEach(function(moduleName) { %>
+        <% if (entries.includes(moduleName)) { %>
+    <script type="module" src="js/<%= moduleName %>.js"></script>
+        <% } %>
+    <% }); %>
+</body>
+</html> 

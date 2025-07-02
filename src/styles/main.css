@@ -1,0 +1,425 @@
+/**
+ * Minimal CSS Utilities for WC-Video Player
+ * Contains ONLY the zwd- classes actually used in the components
+ * All classes verified as used - no unused styles
+ * Preserves all combination styles for buttons and icons
+ */
+
+/* ============================================================================
+   HTML TAG ELEMENT STYLES (Essential for video player)
+   ============================================================================ */
+
+/* Universal box-sizing - Critical for proper layout */
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+/* Base SVG styling - Critical for icon functionality */
+svg {
+    fill: currentColor;
+}
+
+/* Media elements display styling */
+audio, canvas, progress, video {
+    display: inline-block;
+}
+
+/* Base button styling for accessibility */
+button {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+button:-moz-focusring {
+    outline: ButtonText dotted 1px;
+}
+
+/* ============================================================================
+   LAYOUT & POSITIONING UTILITIES
+   ============================================================================ */
+
+.zwd-absolute-position {
+    position: absolute !important;
+}
+
+.zwd-position-middle {
+    top: 50% !important;
+}
+
+.zwd-position-center {
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* ============================================================================
+   FLEXBOX UTILITIES
+   ============================================================================ */
+
+.zwd-flex {
+    display: flex !important;
+}
+
+.zwd-justify-center {
+    justify-content: center !important;
+}
+
+.zwd-justify-end {
+    justify-content: flex-end !important;
+}
+
+.zwd-alignitem-center {
+    align-items: center !important;
+}
+
+.zwd-flex-shrink-0 {
+    flex-shrink: 0 !important;
+}
+
+/* ============================================================================
+   SPACING UTILITIES
+   ============================================================================ */
+
+.zwd-m-top16 {
+    margin-top: 16px !important;
+}
+
+.zwd-m-left8 {
+    margin-left: 8px !important;
+}
+
+.zwd-m-leftauto {
+    margin-left: auto !important;
+}
+
+.zwd-marginless {
+    margin: 0 !important;
+}
+
+/* ============================================================================
+   DISPLAY & VISIBILITY UTILITIES
+   ============================================================================ */
+
+.zwd-hidden-visibility {
+    visibility: hidden !important;
+}
+
+.zwd-width0 {
+    width: 0 !important;
+}
+
+.zwd-opacity5 {
+    opacity: 0.5 !important;
+}
+
+.zwd-unselectable {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+/* ============================================================================
+   CURSOR UTILITIES
+   ============================================================================ */
+
+.zwd-cursor {
+    cursor: pointer !important;
+}
+
+/* ============================================================================
+   UI BASE COMPONENTS
+   ============================================================================ */
+
+.zwd-ui {
+    box-sizing: border-box;
+}
+
+.zwd-button {
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.zwd-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.zwd-button.zwd-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.zwd-button.zwd-loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* ============================================================================
+   ICON UTILITIES & COMBINATIONS
+   ============================================================================ */
+
+.zwd-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.zwd-icon.zwd-right {
+    margin-left: 8px;
+}
+
+/* Button + Icon Combinations (CRITICAL - DO NOT REMOVE) */
+.zwd-button.zwd-icon {
+    padding: 8px;
+    min-width: 40px;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zwd-button.zwd-icon.zwd-big {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 20px;
+    padding: 12px;
+}
+
+.zwd-button.zwd-icon.zwd-circular {
+    border-radius: 50%;
+}
+
+.zwd-button.zwd-icon.zwd-marginless {
+    margin: 0;
+}
+
+/* Multi-class combinations for play button */
+.zwd-button.zwd-icon.zwd-big.zwd-circular {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 24px;
+}
+
+.zwd-button.zwd-icon.zwd-big.zwd-circular.zwd-marginless {
+    margin: 0;
+}
+
+/* ============================================================================
+   COLOR & BACKGROUND UTILITIES
+   ============================================================================ */
+
+.zwd-transparentbg {
+    background: transparent !important;
+}
+
+.zwd-hide-display {
+    display: none!important
+}
+
+/* Combination styles for transparent black buttons */
+.zwd-button.zwd-transparentbg {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.zwd-button.zwd-transparentbg:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.zwd-button.zwd-transparentbg.zwd-black {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.zwd-button.zwd-transparentbg.zwd-black:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Special styling for opacity buttons */
+.zwd-button.zwd-opacity5 {
+    opacity: 0.5;
+}
+
+.zwd-button.zwd-opacity5:hover {
+    opacity: 0.8;
+}
+
+/* ============================================================================
+   BASIC BUTTON STYLES
+   ============================================================================ */
+
+/* Base basic button styling */
+.zwd-ui.zwd-basic.zwd-button,
+.zwd-ui.zwd-basic.zwd-buttons .zwd-button {
+    background: transparent !important;
+    color: var(--zwd-font-color) !important;
+    font-weight: var(--zwd-fontweight-medium, 500);
+    border-radius: 0.30769231em;
+    text-transform: none;
+    text-shadow: none !important;
+    box-shadow: 0 0 0 1px var(--zwd-medium-border-color) inset;
+}
+
+/* Special combination styles for basic backgroundless black buttons */
+.zwd-ui.zwd-basic.zwd-backgroundless.zwd-black.zwd-button {
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #fff !important;
+}
+
+/* ============================================================================
+   BLACK BUTTON STYLES (All states and variations)
+   ============================================================================ */
+
+/* Base black button styling */
+.zwd-ui.zwd-black.zwd-button,
+.zwd-ui.zwd-black.zwd-buttons .zwd-button {
+    background-color: #282828;
+    color: #fff;
+    text-shadow: none;
+    background-image: none;
+}
+
+.zwd-ui.zwd-black.zwd-button {
+    box-shadow: 0 0 0 0 var(--zwd-medium-border-color) inset;
+}
+
+/* Black button hover state */
+.zwd-ui.zwd-black.zwd-button:hover,
+.zwd-ui.zwd-black.zwd-buttons .zwd-button:hover {
+    background-color: #353535;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Black button focus state */
+.zwd-ui.zwd-black.zwd-button:focus,
+.zwd-ui.zwd-black.zwd-buttons .zwd-button:focus {
+    background-color: #3c3c3c;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Black button active state */
+.zwd-ui.zwd-black.zwd-button:active,
+.zwd-ui.zwd-black.zwd-buttons .zwd-button:active {
+    background-color: #424242;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Black button active class variations */
+.zwd-ui.zwd-black.zwd-active.zwd-button,
+.zwd-ui.zwd-black.zwd-button .zwd-active.zwd-button:active,
+.zwd-ui.zwd-black.zwd-buttons .zwd-active.zwd-button,
+.zwd-ui.zwd-black.zwd-buttons .zwd-active.zwd-button:active {
+    background-color: #1b1b1b;
+    color: #fff;
+    text-shadow: none;
+}
+
+/* ============================================================================
+   BUTTON ICON SIZING STYLES (All sizes and inheritance)
+   ============================================================================ */
+
+/* Button icon size variants */
+.zwd-ui.zwd-button.zwd-mini .zwd-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex: 0 0 12px !important;
+}
+
+.zwd-ui.zwd-button.zwd-tiny .zwd-icon {
+    width: 10px !important;
+    height: 10px !important;
+    flex: 0 0 10px !important;
+}
+
+.zwd-ui.zwd-button.zwd-small .zwd-icon {
+    width: 14px !important;
+    height: 14px !important;
+    flex: 0 0 14px !important;
+}
+
+.zwd-ui.zwd-button .zwd-icon {
+    width: 18px !important;
+    height: 18px !important;
+    flex: 0 0 18px !important;
+}
+
+.zwd-ui.zwd-button.zwd-large .zwd-icon {
+    width: 13px !important;
+    height: 13px !important;
+    flex: 0 0 13px !important;
+}
+
+.zwd-ui.zwd-button.zwd-big .zwd-icon {
+    width: 17px !important;
+    height: 17px !important;
+    flex: 0 0 17px !important;
+}
+
+.zwd-ui.zwd-button.zwd-huge .zwd-icon {
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px !important;
+}
+
+.zwd-ui.zwd-button.zwd-massive .zwd-icon {
+    width: 52px !important;
+    height: 52px !important;
+    flex: 0 0 52px !important;
+}
+
+/* SVG inheritance from parent icon container - Critical for proper sizing */
+.zwd-ui.zwd-button .zwd-icon svg {
+    width: inherit !important;
+    height: inherit !important;
+    flex: 0 0 auto !important;
+}
+
+.zwd-zindex10 {
+    z-index: 10!important
+}
+
+/* ============================================================================
+   SVG ICON SIZING STYLES
+   ============================================================================ */ 
+
+.zwd-animating.zwd-transition {
+    backface-visibility: hidden;
+    visibility: visible!important;
+}
+
+.zwd-transition {
+    animation-iteration-count: 1;
+    animation-duration: .3s;
+    animation-timing-function: ease;
+    animation-fill-mode: both
+}
